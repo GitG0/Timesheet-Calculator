@@ -1,5 +1,6 @@
 # Run at the start of your pay period (Sunday bi-weekly in my case)
 `pip i`
+
 `py timesheetCalculator.py`
 
 Can be used with .ics files or .ics URL's

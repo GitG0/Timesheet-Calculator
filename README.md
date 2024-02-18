@@ -1,9 +1,11 @@
-#Needs to be manually run at the start of your pay period (Sunday bi-weekly in my case)
-Can be used with .ics files or .ics URL's
-
+# Run at the start of your pay period (Sunday bi-weekly in my case)
 `py timesheetCalculator.py`
 
-#TODO
+Can be used with .ics files or .ics URL's
+
+
+
+# TODO
 - Set and account for break durations
 - Have input for hourly rate
 - Allow for section to add hours that were picked up

@@ -1,13 +1,13 @@
 import icalendar
-from datetime import datetime
+from datetime import datetime,timezone
 import requests
 
-# Uncomment to read from file
+# To read from file
 # file = "myschedule.ics"
 # with open(file) as f:
 #     calendar = icalendar.Calendar.from_ical(f.read())
 
-# Uncomment to read from URL
+# To read from URL
 url = input("Enter .ics URL:")
 calendar = icalendar.Calendar.from_ical(requests.get(url).text)
 
@@ -15,9 +15,9 @@ calendar = icalendar.Calendar.from_ical(requests.get(url).text)
 periodStart = datetime.now()
 
 # Set to specific start time
-# PeriodStart = datetime(2024,2,11,0,0,0)
+# periodStart = datetime(2024,3,3,0,0,0)
 
-# Enter your wage here
+# Enter your wage here in $
 pay = 17.55
 
 hours = 0
@@ -28,8 +28,9 @@ for shift in calendar.walk('VEVENT'):
     start = shift.get("DTSTART").dt
     end = shift.get("DTEND").dt
 
+    # Removes timezone info from both datetimes
     # Caps pay period to 2 weeks
-    if (end.replace(tzinfo=None) - periodStart).days > 13:
+    if (datetime.combine(end, datetime.min.time()) - datetime.combine(periodStart, datetime.min.time())).days > 13:
         break
     periodEnd = end
 
